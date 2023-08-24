@@ -140,9 +140,29 @@ for key, group in grouped_lis:
 
 # groupby conlumn
 grouped_col = df.groupby('key1')
-grouped_col = df.groupby('key1', as_index=False)
-grouped_col = df.groupby('key1', as_index=True)
+groups = {}
+for key, group in grouped_col:
+    print('key: ', key)
+    print('data: \n', group)
+    groups[key]=group
+    print('------------------------')
+grouped_col_1 = df.groupby('key1', as_index=False)
+for key, group in grouped_col_1:
+    print('key: ', key)
+    print('data: \n', group)
+    print('------------------------')
+grouped_col_2 = df.groupby('key1', as_index=True)
+for key, group in grouped_col_2:
+    print('key: ', key)
+    print('data: \n', group)
+    print('------------------------')
 grouped_col2 = df.groupby(['key1','key2'])
+groups = {}
+for key, group in grouped_col2:
+    print('key: ', key)
+    print('data: \n', group)
+    groups[key]=group
+    print('------------------------')
 
 # groupby dictionary (use index or columns)
 people = pd.DataFrame(np.random.randn(5,5),
