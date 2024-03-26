@@ -8,7 +8,7 @@ dir(5)
 
 #%% 1.1 Numeric: Integer & Float
 """
-帶有小數點的稱 float, 反之稱 integer(int)
+Float: Represents the floating point number(decimals). Python float values are represented as 64-bit double-precision values(float64).
 """
 #e.g.
 int_1 = 10
@@ -21,11 +21,11 @@ print(type(flo_1))
 """
     1. +
     2. -
-    3. *
-    4. ** : 次方  (根號: **0.5)
-    5. / : 一般除法
-    6. //: 整除法
-    7. % : 求餘數(mod)
+    3. * : Multiplication
+    4. ** : Power (e.g. Square root of x ---> x**0.5)
+    5. / : Normal division (float) 
+    6. //:Floor division
+    7. % : Modulus;returns the remainder when the first operand is divided by the second
     
     PS: When int and float are calculated together, the results are mostly float.
 """
@@ -49,17 +49,17 @@ print(type(flo_1))
 #%% 1.3 Integer & Float: Common Functions
 """
     1. abs(x): 
-        x的絕對值
+        Return the absolute value of x
     2. int(x): 
-        把x強制轉成integer
+        Conver x to integer
     3. float(x): 
-        把x強制轉成float 
+        Conver x to float 
     4. divmod(x, y): 
-        return 商 & 餘
+        Display the quotient and the remainder(in a tuple) of x divided by y
     5. pow(x,y): 
-        同 x**y
+        Equal to x**y
     6. round(x, n): 
-        取小數n位
+        Return a float number that will be rounded to the n decimal places. If n is not given, the default is 0 decimal place.
 """
 abs(-1)
 
@@ -82,9 +82,9 @@ round(1.65, 1)
 """
 常見 methods: (optional)
     1. x.is_integer(): 
-        return True when x is integer
+        Return True when x is integer
     2. x.as_integer_ratio(): 
-        轉成分數
+        Returns a pair of integers whose ratio is exactly equal to the original float and with a positive denominator
 """
 1.5.is_integer()
 1.5.as_integer_ratio()
@@ -95,19 +95,20 @@ round(1.65, 1)
     2. math.e: 
         2.71828......
     3. math.fabs(x): 
-        同abs(x)
+        abs(x)
     4. math.floor(x): 
-        無條件捨去
+        Rounds down and returns the largest integer less than or equal to a given number
     5. math.ceil(x): 
-        無條件進位
+        Rounds up and returns the smallest integer greater than or equal to a given number
     6. math.factorial(x): 
-        x!
+        math.factorial(x) = x! 
+                          = 1*2*3*....*(x-1)*x
     7. math.log(x, y): 
-        以y為底數的log, 省略y即ln
+        Return the logarithm of x to base y. If y is not given, return the natural logarithm of x
     8. math.pow(x, y): 
-        同 x**y
+        x**y
     9. math.sqrt(x): 
-        同 x**0.5
+        x**0.5
     10. math.sin()
         math.cos()
         math.tan()
@@ -142,12 +143,12 @@ String is immutable.
 
 #%% 2.2 String: Getting substring & Slicing & Modifing
 """
-    1. [x]: 
-        return the character on position x.
-        ~超出範圍會 raise error
-    2. [a:b:c]: 
-        return objects starting from position a, ending at position b(excluded), and stepping c.
-        ~超出範圍不 error, 會 return empty
+    1. s[a]: 
+        return the character on position a of string s
+        PS: Python will raise error if out of bounds.
+    2. s[a:b:c]: 
+        return objects starting from position a, ending at position b(excluded), and stepping c in string s.
+        PS: Python will not raise error if out of bounds; it will just return nothing.
     3. s1 + s2 +.....:
         Combine strings 
     4. s1 * k:
@@ -441,23 +442,21 @@ l1_by_numb_rev = sorted(l1, key=lambda x:x[1], reverse=True)
 """
 Type help(list.*) in terminal to see the details of each method
     1. l.clear():
-        清空list內容
+        empty the list
     2. l.append(x):
-        最尾端加個x
+        add x to the end of list
     3. l1.extend(l2): 
-        l1.extend(l2) 同 l1 += l2
+        the same as "l1 += l2"
     4. l.insert(k, x):
         Insert x in position k, others move back one position.
         Change the original list.
     5. l.sort(key, reverse=False):
-        排序
-        原list會改
-        reverse=False ------> 由小到大
-        reverse=True  ------> 由大到小
+        Permantly changed the order of original list
+        reverse=False ------> small to larger
+        reverse=True  ------> large to small
         key: the sorting creteria ------> usually use "lambda"
     6. l.reverse():
-        倒寫
-        原list會改
+        Permantly reverse the order of the original list
     7. l.pop(k=-1):
         Take out and return the element in k position.
         Default: the last element.
@@ -466,8 +465,10 @@ Type help(list.*) in terminal to see the details of each method
     8. l.remove(x):
         Remove only the firt element x in l.
         If x is not found, raise "Value Error".
-    8.1. del l & del l[]:
-        刪除整個list or 用index刪除特定element
+    8.1. del l[x]:
+        Remove the element on position x
+    8.2. del l:
+        Remove the whole list objec
     9. l.index(x, [start, stop]):
         Return the position of the first element x.
         Raises "ValueError" if x is not found.
@@ -647,10 +648,8 @@ Type help(tuple.*) in terminal to see the details of each method
     1. t.index(x, [start, stop]):
         Return the position of the first element x.
         Raises "ValueError" if x is not found.
-    10. t.count(x):
+    2. t.count(x):
         Count the occurance of element x in tuple.
-    11. t.copy():
-        Return a copy of t.
 """
 #1. index
 t = ('a', 'b', 'b''c','d')
@@ -663,9 +662,6 @@ t = ('a', 'a', 'b', 'c', 'd')
 count_a = t.count('a')
 count_x = t.count('x') #-----> 0
 
-#11. copy
-t = (1,2,3)
-t_copy = t.copy()
 
 #%% 5.1 Mapping Type: Dictionaty(dict)
 """
@@ -990,7 +986,7 @@ median = statistics.median(lis)
 mode = statistics.mode(lis)
 quantile_each = statistics.quantiles(lis)
 stdev_pop = statistics.pstdev(lis)
-stdev_sam = statistics.stdex(lis)
+stdev_sam = statistics.stdev(lis)
 var_pop = statistics.pvariance(lis)
 var_sam = statistics.variance(lis)
 

@@ -265,10 +265,6 @@ b = (5,4,3,2,1)
 dis_ab = dis_cal(a, b)
 
 
-a = (1,2,3)
-a = (1,2)
-
-
 #%% 4.2 Function: inputs
 """
 There are four types of inputs can be used:

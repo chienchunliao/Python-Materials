@@ -417,7 +417,7 @@ s_2 = pd.Series([1, 2, 3, 4, 5], index=index)
 df_2.sum() == df_2.sum(axis=0)
 df_2.sum(axis=1)
 
-# 2. Mapping/Repeating functions on iitems or entire series
+# 3. Mapping/Repeating functions on iitems or entire series
 """
     1. Series.map(arg, 
                   na_action=None):
@@ -468,7 +468,7 @@ df_2 = pd.DataFrame([[1, 2, 3, 4, 5],
 result = []
 def trans(col):
     return (col.max()-col.min())/col.mean()
-for col_name, col in df_2.iteritems():
+for col_name, col in df_2.items():
     result.append(trans(col))
 result = pd.Series(result, index=df_2.columns)
 
@@ -507,7 +507,7 @@ result_lam = df_2.applymap(lambda x: x*(-1)+10)
 
 
 
-# 2. Droping entire row or column
+# 4. Droping entire row or column
 """
     1. drop(labels=None, 
             axis=0, 
@@ -528,7 +528,7 @@ df_2.drop('c1', axis=1, inplace=True)
 df_2.drop(['c1','c3','c4'], axis=1, inplace=True)
 df_2.drop(['a','b'], axis=0, inplace=True)
 
-# 3. Missing Values: Check, Count, Drop, Impute 
+# 5. Missing Values: Check, Count, Drop, Impute 
 """
     1. isnull()
     2. notnull()
@@ -564,9 +564,7 @@ fill_dic = {'c1':df_2['c1'].mean(),
             'c5':df_2['c5'].mean()}
 df_2_fillmean = df_2.fillna(value=fill_dic, axis=1)
 
-# 4. Outliers
-
-# 5. Duplicate: Check, drop ------> row
+# 6. Duplicate: Check, drop ------> row
 """
     1. duplicated(subset=None, 
                   keep={‘first’, ‘last’})
